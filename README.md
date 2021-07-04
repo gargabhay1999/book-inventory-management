@@ -19,6 +19,37 @@ User can search for any book from web app. Search results will contain all relat
 5. Books which are not there in local inventory and are present on google books will be shown as "Not Available"
 6. User has option to add a new book to the inventory, they can also mention the quantities.
 
+### Implementation Logic
+
+1. Google Book API is used to search the book "https://www.googleapis.com/books/v1/volumes?q=search+terms"
+2. It provides info about the book. In this project we need id, authors, publishedDate, thumbnail url, title
+3. To match record with our local inventory, id (googleId) is used to find the data.
+4. main.py file contains necessary CRUD APIs for Adding new book, Updating the existing books, Deleting a book.
+
+## APIs
+
+1. [GET] /getBooks : Get all books present in the local inventory (including Out of Stock ones)
+2. [GET] /getFinalBooks?searchText=${searchText} : search book from google books, map with local inventory data and gives results with their availabilty status.
+3. [POST] /addBook : to add a book
+Sample Request Body: {"googleId": "7mktLCw0E2IC", "title": "Java Performance", "authors": "Charlie Hunt", "publishedDate":
+"2012", "quantity": 12, "imageUrl":
+"http://books.google.com/books/content?id=7mktLCw0E2IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"}
+
+4. [PUT] /updateBookByGoogleId/${googleId}/
+Sample Request Body: {"googleId": "7mktLCw0E2IC", "title": "Java Performance", "authors": "Charlie Hunt", "publishedDate":
+"2012", "quantity": 12, "imageUrl":
+"http://books.google.com/books/content?id=7mktLCw0E2IC&printsec=frontcover&img=1&zoom=1&source=gbs_api"}
+
+5. [DELETE] /deleteBookByGoogleId/${googleId}/
+
+
+## Logic to search book in local inventory
+
+1. Search API, (API-2 above) makes call to external google book API, get all results and for all book we search in our local inventory whether that book is present or not.
+2. if present and available quantity > 0, return the data from local inventory. Front end checks the quantity count and display as "Available" with quantities.
+3. if present and available quantity = 0, return the data from local inventory. Front end checks the quantity count and display as "Out of Stock".
+4. if absent, return google book data with quantity = -1, return the data from local inventory. Front end checks the quantity count and display as "Not Available" .
+
 #### Local Installation 
 
 ### Install Back-End Requirements
