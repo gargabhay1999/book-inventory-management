@@ -35,21 +35,21 @@ function BookCard(props) {
                 <h5>Published Date: {props.publishedDate}</h5>
                 {props.quantity == 0 ?
                     <div>
-                        <h5>OUT OF STOCK</h5> 
+                        <h5 style={{ color: 'red' , fontSize:'18px'}}>OUT OF STOCK</h5> 
                         <button className="btn btn-success" onClick={ () => editBook(props.book)}>Manage Inventory</button>
                         <button className="btn btn-danger" onClick={ () => deleteBook(props.googleId)}>Remove Books</button>
                     </div>
                     : null}
                 {props.quantity > 0 ?
                     <div>
-                        <h5>Available Qty: {props.quantity}</h5> 
+                        <h5 style={{ color: 'green' , fontSize:'18px'}}>Available Qty: {props.quantity}</h5> 
                         <button className="btn btn-success" onClick={ () => editBook(props.book)}>Manage Inventory</button>
                         <button className="btn btn-danger" onClick={ () => deleteBook(props.googleId)}>Remove Books</button>
                     </div>
                     : null}
                 {props.quantity < 0 ?
                 <div>
-                    <h5>NOT AVAILABLE</h5> 
+                    <h5 style={{ color: 'indigo' , fontSize:'18px'}}>NOT AVAILABLE</h5> 
                     <button className="btn btn-success" onClick={ () => editBook(props.book)}>Add Book</button>
                 </div>
                 : null}

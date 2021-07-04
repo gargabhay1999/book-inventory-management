@@ -57,7 +57,7 @@ function BookList(props) {
                     : null}
                 {book.quantity < 0 ?
                 <div>
-                    <h5>NOT AVAILABLE</h5> 
+                    <h5 style={{ color: 'indigo' , fontSize:'18px'}}>NOT AVAILABLE</h5> 
                     <Button className="btn btn-success" onClick={ () => editBook(book)}>Add Book</Button>
                 </div>
                 : null}
