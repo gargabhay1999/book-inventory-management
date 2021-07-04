@@ -8,7 +8,7 @@ function Search(props) {
                     <input type="text"
                     placeholder="Search Book"
                     onChange={props.handleSearch} />
-                    <button type="submit">Search</button>
+                    <button className="btn btn-info" type="submit">Search</button>
                 </form>                
             </div>
         </div>

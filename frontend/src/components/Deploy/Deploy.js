@@ -3,7 +3,7 @@ import React from 'react'
 function Deploy(props) {
     return (
         <div>
-            {props.prop.tutorial}
+            <button className="btn btn-success">{props.prop.tutorial}</button>
         </div>
     )
 }
