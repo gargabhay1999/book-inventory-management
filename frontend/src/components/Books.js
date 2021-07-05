@@ -10,7 +10,7 @@ function Books() {
 
 
     useEffect(() => {
-        fetch('https://eflask-app-abhay.herokuapp.com/getBooks', {
+        fetch('https://spoonshot-book-inventory-abhay.herokuapp.com/getBooks', {
             'method': 'GET',
             headers: {
                 'Content-Type': 'applications/json'
@@ -25,7 +25,7 @@ function Books() {
     const searchBook = (e) => {
         e.preventDefault()
         console.log(searchBook)
-        return fetch(`https://eflask-app-abhay.herokuapp.com/getFinalBooks?searchText=${searchText}`, {
+        return fetch(`https://spoonshot-book-inventory-abhay.herokuapp.com/getFinalBooks?searchText=${searchText}`, {
             'method': 'GET',
             headers: {
                 'Content-Type': 'applications/json'

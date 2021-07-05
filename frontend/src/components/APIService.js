@@ -5,7 +5,7 @@ export default class APIService {
             alert("Please enter valid quantity")
         }
         else{
-            return fetch(`https://eflask-app-abhay.herokuapp.com/addBook`, {
+            return fetch(`https://spoonshot-book-inventory-abhay.herokuapp.com/addBook`, {
                 'method': 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ export default class APIService {
     }
 
     static DeleteBook(googleId) {
-        return fetch(`https://eflask-app-abhay.herokuapp.com/deleteBookByGoogleId/${googleId}/`, {
+        return fetch(`https://spoonshot-book-inventory-abhay.herokuapp.com/deleteBookByGoogleId/${googleId}/`, {
             'method': 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export default class APIService {
     }
 
     static UpdateBook(googleId, body) {
-        return fetch(`https://eflask-app-abhay.herokuapp.com/updateBookByGoogleId/${googleId}/`, {
+        return fetch(`https://spoonshot-book-inventory-abhay.herokuapp.com/updateBookByGoogleId/${googleId}/`, {
             'method': 'PUT',
             headers: {
                 'Content-Type': 'application/json'
