@@ -71,25 +71,36 @@ def getFinalBooks():
     for item in data['items'] :
         book = Books.query.filter_by(googleId=item['id']).first()
         if(book):
-            qty = book.quantity
             myBook = {
                 "googleId" : book.googleId,
                 "title" : book.title,
                 "authors" : book.authors,
                 "publishedDate" : book.publishedDate,
-                "quantity" : qty,
+                "quantity" : book.quantity,
                 "imageUrl" : book.imageUrl
             }
+            if(myBook):
+                myInventory.append(myBook)
         else:
-            myBook = {
+            authors = "Not Found"
+            publishedDate = "Not Found"
+            imageUrl = "https://i.picsum.photos/id/961/200/300.jpg?hmac=rshb15adr3WtZi83bW54uoTd2m0FuSCNwtfD74RJY0k" #dummy imageUrl
+            if 'authors' in item['volumeInfo']:
+                authors = item['volumeInfo']['authors'][0]
+            if 'publishedDate' in item['volumeInfo']:
+                publishedDate = item['volumeInfo']['publishedDate']
+            if 'imageLinks' in item['volumeInfo']:
+                imageUrl = item['volumeInfo']['imageLinks']['thumbnail']
+            myGoogleBook = {
                 "googleId" : item['id'],
                 "title" : item['volumeInfo']['title'],
-                "authors" : item['volumeInfo']['authors'][0],
-                "publishedDate" : item['volumeInfo']['publishedDate'],
+                "authors" : authors,
+                "publishedDate" : publishedDate,
                 "quantity" : -1,
-                "imageUrl" : item['volumeInfo']['imageLinks']['thumbnail']
+                "imageUrl" : imageUrl
             }
-        myInventory.append(myBook)
+            if(myGoogleBook):
+                myInventory.append(myGoogleBook)
     return json.dumps(myInventory)
 
 @app.route('/addBook', methods = ['POST'])
