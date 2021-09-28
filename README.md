@@ -99,7 +99,7 @@ Open your browser to ``` http://localhost:3000 ```
 #### Deploy and Run on Heroku
 
 1. Sign up on Heroku for free. Create a new app. Name it of your choice.
-2. fork https://github.com/gargabhay1999/book-inventory-spoonshot to your github account. And connect heroku to this github repository.
+2. fork https://github.com/gargabhay1999/book-inventory-management to your github account. And connect heroku to this github repository.
 3. Turn on Auto Deployment
 4. Click "Save" or "Proceed for Deployemnt"
 
